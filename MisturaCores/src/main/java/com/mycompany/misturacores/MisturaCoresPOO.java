@@ -23,13 +23,32 @@ public class MisturaCoresPOO {
                     String cor1 = JOptionPane.showInputDialog("Digite a primeira cor para combinação:");
                     String cor2 = JOptionPane.showInputDialog("Digite a segunda cor para combinação:");
                     String resultado;
+                    
+                    for(CombinacaoCor cc:BancoDeCores.cores){
+                        if(cor1.equals(cc.cor1)&&cor2.equals(cc.cor2))
+                            JOptionPane.showMessageDialog(null, "A combinação entre essas cores resulta em "+cc.getCorResultante().toUpperCase());
+                        else if(cor1.equals(cc.cor2)&&cor2.equals(cc.cor1))
+                            JOptionPane.showMessageDialog(null, "A combinação entre essas cores resulta em "+cc.getCorResultante().toUpperCase());
+                    }
                     break;
                     
                 case 2:
                     String cor = JOptionPane.showInputDialog("Digite a cor que deseja fazer:");
+                    String texto="";
+                    
+                    for(CombinacaoCor cc:BancoDeCores.cores){
+                        if(cor.equals(cc.corResultante))
+                            texto+=cc.cor1.toUpperCase()+" e "+cc.cor2.toUpperCase()+"\n";
+                            
+                    }
+                    if(!texto.isEmpty())
+                        JOptionPane.showMessageDialog(null, "Para fazer essa cor, misture:\n\n"+texto);
+                    else
+                        JOptionPane.showMessageDialog(null, "Cor indisponível.");
                     break;
             }
         }
+        
     }
     
     public static class CombinacaoCor{
@@ -40,15 +59,6 @@ public class MisturaCoresPOO {
             this.cor2 = cor2;
             this.corResultante = corResultante;
         }
-
-        public String getCor1() {
-            return cor1;
-        }
-
-        public String getCor2() {
-            return cor2;
-        }
-        
         public String getCorResultante() {
             return corResultante;
         }
@@ -87,7 +97,6 @@ public class MisturaCoresPOO {
             cores.add(new CombinacaoCor("verde", "laranja", "marrom"));
             cores.add(new CombinacaoCor("verde", "roxo", "cinza"));
             cores.add(new CombinacaoCor("laranja", "roxo", "marrom"));
-            
         }  
     }
     
