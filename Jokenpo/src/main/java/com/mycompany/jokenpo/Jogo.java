@@ -21,6 +21,7 @@ public class Jogo{
     
     public void comecarJogo(){
         if(modoJogo==1){
+            
             Random random = new Random();
             int jogadaPC = random.nextInt(3)+1;
             
